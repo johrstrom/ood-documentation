@@ -26,3 +26,6 @@ jobs:
 
       - name: Make Html
         run: docker run --rm -v "${PWD}:/doc" -u "$(id -u):$(id -g)" ohiosupercomputer/docker-sphinx make html
+
+      - name: check env
+        run: env | grep GITHUB
