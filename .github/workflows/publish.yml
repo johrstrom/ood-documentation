@@ -13,13 +13,12 @@ on:
 
 
 jobs:
-  tests:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
-      - run: make html
-
-      - run: echo 'heres the next thing I need to do'
+      - name: Make Html
+        run: docker --rm -t -v "${PWD}:/doc" -u "$(id -u):$(id -g)" ohiosupercomputer/docker-sphinx make html
