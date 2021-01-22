@@ -2,6 +2,10 @@ name: Publish Html
 
 on:
   push:
+    branches:
+      - master
+      - develop
+      - release-*
   pull_request:
     branches:
       - master
@@ -13,12 +17,12 @@ on:
 
 
 jobs:
-  tests:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
-      - run: make html
-
+      - name: Make Html
+        run: docker run --rm -v "${PWD}:/doc" -u "$(id -u):$(id -g)" ohiosupercomputer/docker-sphinx make html
