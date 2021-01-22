@@ -20,5 +20,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - run: Make HTML
+      - run: make html
 
+      - run: echo 'heres the next thing I need to do'
